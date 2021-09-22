@@ -1,14 +1,11 @@
 import React from 'react';
 
-class Medio extends React.Component {
+class SuperFacil extends React.Component {
   constructor() {
     super();
     this.state = {
       cor1: '',
       cor2: '',
-      cor3: '',
-      cor4: '',
-      cor5: '',
       corEsc: '',
       score: 0,
       acertou: false,
@@ -36,12 +33,9 @@ class Medio extends React.Component {
     await this.setState({
       cor1: this.gerarCor(),
       cor2: this.gerarCor(),
-      cor3: this.gerarCor(),
-      cor4: this.gerarCor(),
-      cor5: this.gerarCor(),
     })
-    const { cor1, cor2, cor3, cor4, cor5 } = this.state;
-    const corAleatoria = [cor1, cor2, cor3, cor4, cor5];
+    const { cor1, cor2 } = this.state;
+    const corAleatoria = [cor1, cor2];
     const corEsc = this.sortear(corAleatoria);
     await this.setState({corEsc});
   }
@@ -50,7 +44,7 @@ class Medio extends React.Component {
     const { corEsc } = this.state
     if (event.target.style.backgroundColor === corEsc ) {
       await this.setState((anterior) => ({
-        score: anterior.score + 2,
+        score: anterior.score + 0.5,
         acertou: true,
         mensagem: 'Acertou!'
       }))
@@ -66,12 +60,9 @@ class Medio extends React.Component {
   }
 
   render() {
-    const { cor1, cor2, cor3, cor4, cor5, corEsc, score, mensagem } = this.state;
+    const { cor1, cor2, corEsc, score, mensagem } = this.state;
     const ball1 = { backgroundColor: cor1 }
     const ball2 = { backgroundColor: cor2 }
-    const ball3 = { backgroundColor: cor3 }
-    const ball4 = { backgroundColor: cor4 }
-    const ball5 = { backgroundColor: cor5 }
     return (
     <div>
       <p>{`Tente adivinhar esta cor: ${corEsc}`}</p>
@@ -82,9 +73,6 @@ class Medio extends React.Component {
       <div>
         <div className='ball' style={ ball1 } onClick={this.placar} />
         <div className='ball' style={ ball2 } onClick={this.placar} />
-        <div className='ball' style={ ball3 } onClick={this.placar} />
-        <div className='ball' style={ ball4 } onClick={this.placar} />
-        <div className='ball' style={ ball5 } onClick={this.placar} />
       </div>
       <p className='answer'>{mensagem}</p>
       <div>
@@ -95,4 +83,4 @@ class Medio extends React.Component {
   }
 }
 
-export default Medio;
+export default SuperFacil;

@@ -2,7 +2,7 @@ import React from 'react';
 
 class EscDif extends React.Component {
   render() {
-    const { fac, med, dif} = this.props;
+    const { supfac, fac, med, dif} = this.props;
     return (
       <div>
       <div>
@@ -10,7 +10,8 @@ class EscDif extends React.Component {
         <p>Escolha a dificuldade:</p>
       </div>
       <div>
-        <button type="button" onClick={ fac }>Facil</button>
+        <button type="button" onClick={ supfac }>Super Fácil</button>
+        <button type="button" onClick={ fac }>Fácil</button>
         <button type="button" onClick={ med }>Médio</button>
         <button type="button" onClick={ dif }>Difícil</button>
       </div>
