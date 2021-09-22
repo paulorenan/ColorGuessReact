@@ -1,5 +1,8 @@
 import React from 'react';
 import EscDif from './EscDif';
+import Facil from './dificuldades/Facil';
+import Medio from './dificuldades/Medio';
+import Dificil from './dificuldades/Dificil';
 
 class MainPage extends React.Component {
   constructor(){
@@ -24,9 +27,31 @@ class MainPage extends React.Component {
     this.setState({ dificil: true, difEscolhida: true })
   }
 
-  render() {
+  jogo() {
+    const { facil, medio, dificil } = this.state
     return (
-      <div>Hello World</div>
+      <section>
+        <p id='rgb-color'></p>
+        <div>
+          <p>Placar: </p>
+          <p id='score'>0</p>
+        </div>
+          { facil ?  <Facil /> : null }
+          { medio ?  <Medio /> : null }
+          { dificil ?  <Dificil /> : null }
+        <div>
+          <button id='reset-game'>Novas cores</button>
+        </div>
+    </section>
+    )
+  }
+
+  render() {
+    const { difEscolhida } = this.state;
+    return (
+      <div>
+        { difEscolhida ? this.jogo() : <EscDif fac={this.escFac} med={this.escMed} dif={this.escDif}/> }
+      </div>
     )
   }
 }
