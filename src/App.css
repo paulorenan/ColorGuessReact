@@ -155,6 +155,10 @@ footer {
   .title h1, h2 {
     margin: 0
   }
+  
+  .main {
+    height: 600px;
+  }
 
   .title h2 {
     font-size: 15px;
@@ -173,6 +177,11 @@ footer {
   .record p {
     margin: 0;
     font-size: 15px;
+  }
+
+  .corEsc {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .main h2 {
@@ -200,6 +209,10 @@ footer {
     align-items: center;
     justify-content: center;
     width: 80%;
+  }
+
+  .bol {
+    width: 90%;
   }
 
 }

@@ -90,12 +90,15 @@ class Medio extends React.Component {
     <div>
       <Header />
       <div className="main">
-        <h2>{`Tente adivinhar esta cor: ${corEsc}`}</h2>
+        <div className="corEsc">
+          <h2>Tente adivinhar esta cor:</h2>
+          <h2>{corEsc}</h2>
+        </div>
         <div className='score'>
           <h2>Placar: </h2>
           <h2>{score}</h2>
         </div>
-        <div className="bolas">
+        <div className="bolas bol">
           <button className='ball' style={ ball1 } onClick={this.placar} disabled={disable} />
           <button className='ball' style={ ball2 } onClick={this.placar} disabled={disable} />
           <button className='ball' style={ ball3 } onClick={this.placar} disabled={disable} />
