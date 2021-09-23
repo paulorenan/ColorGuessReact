@@ -182,6 +182,7 @@ footer {
   .corEsc {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
   }
 
   .main h2 {
