@@ -104,7 +104,7 @@ class Dificil extends React.Component {
           <h2>Placar: </h2>
           <h2>{score}</h2>
         </div>
-        <div className="bolas">
+        <div className="bolas bol">
           <button className='ball' style={ ball1 } onClick={this.placar} disabled={disable} />
           <button className='ball' style={ ball2 } onClick={this.placar} disabled={disable} />
           <button className='ball' style={ ball3 } onClick={this.placar} disabled={disable} />

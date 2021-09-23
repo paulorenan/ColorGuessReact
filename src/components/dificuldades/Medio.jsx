@@ -98,7 +98,7 @@ class Medio extends React.Component {
           <h2>Placar: </h2>
           <h2>{score}</h2>
         </div>
-        <div className="bolas bol">
+        <div className="bolas">
           <button className='ball' style={ ball1 } onClick={this.placar} disabled={disable} />
           <button className='ball' style={ ball2 } onClick={this.placar} disabled={disable} />
           <button className='ball' style={ ball3 } onClick={this.placar} disabled={disable} />
