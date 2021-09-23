@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ColorGuessReact/static/css/main.ad46213f.chunk.css",
+    "main.css": "/ColorGuessReact/static/css/main.ff8cb1d4.chunk.css",
     "main.js": "/ColorGuessReact/static/js/main.87904679.chunk.js",
     "main.js.map": "/ColorGuessReact/static/js/main.87904679.chunk.js.map",
     "runtime-main.js": "/ColorGuessReact/static/js/runtime-main.8edb0b38.js",
@@ -10,13 +10,13 @@
     "static/js/3.f046833f.chunk.js": "/ColorGuessReact/static/js/3.f046833f.chunk.js",
     "static/js/3.f046833f.chunk.js.map": "/ColorGuessReact/static/js/3.f046833f.chunk.js.map",
     "index.html": "/ColorGuessReact/index.html",
-    "static/css/main.ad46213f.chunk.css.map": "/ColorGuessReact/static/css/main.ad46213f.chunk.css.map",
+    "static/css/main.ff8cb1d4.chunk.css.map": "/ColorGuessReact/static/css/main.ff8cb1d4.chunk.css.map",
     "static/js/2.47f7d41a.chunk.js.LICENSE.txt": "/ColorGuessReact/static/js/2.47f7d41a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8edb0b38.js",
     "static/js/2.47f7d41a.chunk.js",
-    "static/css/main.ad46213f.chunk.css",
+    "static/css/main.ff8cb1d4.chunk.css",
     "static/js/main.87904679.chunk.js"
   ]
 }
