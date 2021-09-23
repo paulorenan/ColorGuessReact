@@ -7,6 +7,7 @@ class EscDif extends React.Component {
       <div>
       <div>
         <p>Bem vindo ao jogo Color Guess</p>
+        <p>{`Recorde: ${localStorage.getItem('recorde')}`}</p>
         <p>Escolha a dificuldade:</p>
       </div>
       <div>

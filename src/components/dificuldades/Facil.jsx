@@ -54,6 +54,9 @@ class Facil extends React.Component {
         disable: true,
         newColor: false,
       }))
+      const { score } = this.state;
+      const recorde = parseInt(localStorage.getItem('recorde'));
+      if (score > recorde) localStorage.setItem('recorde', score);
     } else {
       await this.setState({ acertou: false, disable: true, newColor: false,})
     }

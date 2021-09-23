@@ -47,12 +47,15 @@ class SuperFacil extends React.Component {
     const { corEsc } = this.state
     if (event.target.style.backgroundColor === corEsc ) {
       await this.setState((anterior) => ({
-        score: anterior.score + 1,
+        score: anterior.score + 0.5,
         acertou: true,
         mensagem: 'Acertou!',
         disable: true,
         newColor: false,
       }))
+      const { score } = this.state;
+      const recorde = parseInt(localStorage.getItem('recorde'));
+      if (score > recorde) localStorage.setItem('recorde', score);
     } else {
       await this.setState({ acertou: false, disable: true, newColor: false,})
     }
