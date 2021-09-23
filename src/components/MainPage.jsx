@@ -4,6 +4,7 @@ import SuperFacil from './dificuldades/Mel';
 import Facil from './dificuldades/Facil';
 import Medio from './dificuldades/Medio';
 import Dificil from './dificuldades/Dificil';
+import Footer from './Footer';
 
 class MainPage extends React.Component {
   constructor(){
@@ -47,20 +48,23 @@ class MainPage extends React.Component {
     const { superFacil, facil, medio, dificil } = this.state
     return (
       <div>
-        { superFacil ? <SuperFacil /> : null }
-        { facil ?  <Facil /> : null }
-        { medio ?  <Medio /> : null }
-        { dificil ?  <Dificil /> : null }
-        <button onClick={this.changeDif}>Escolher outra dificuldade</button>
+        { superFacil ? <SuperFacil muda={this.changeDif}/> : null }
+        { facil ?  <Facil muda={this.changeDif}/> : null }
+        { medio ?  <Medio muda={this.changeDif}/> : null }
+        { dificil ?  <Dificil muda={this.changeDif}/> : null }
       </div>
     )
   }
 
   render() {
     const { difEscolhida } = this.state;
+    if (localStorage.getItem('recorde') === null) {
+      localStorage.setItem('recorde', 0)
+    }
     return (
-      <div>
-        { difEscolhida ? this.jogo() : <EscDif supfac={ this.escSupFac } fac={this.escFac} med={this.escMed} dif={this.escDif}/> }
+      <div className="backImage">
+        { difEscolhida ? this.jogo() : <EscDif sup={ this.escSupFac } fac={this.escFac} med={this.escMed} dif={this.escDif}/> }
+        <Footer />
       </div>
     )
   }

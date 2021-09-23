@@ -1,9 +1,145 @@
 .ball {
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
+  border: 3px solid black;
+  width: 60px;
+  height: 60px;
   margin: 10px;
   display: inline-block;
   border-radius: 50%;
   cursor: pointer;
+}
+
+header {
+  display: flex;
+  background-image: url("https://www.des1gnon.com/wp-content/uploads/2019/04/Des1gnON-Psicologia-das-Cores-no-Design-e-Marketing.png");
+  background-position: center;
+  height: 86px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid black;
+}
+
+.title {
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  margin-left: 2%
+}
+
+.title h1, h2 {
+  margin: 0
+}
+
+.title h2 {
+  font-size: 20px;
+  -webkit-text-stroke-width: 1px;
+}
+
+.record {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  margin-right: 2%;
+}
+
+.record p {
+  margin: 0;
+}
+
+.main1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+}
+
+.backImage {
+  background-image: url("https://a-static.besthdwallpaper.com/resumo-explosao-de-cores-papel-de-parede-2560x1600-55604_7.jpg");
+  height: 696px;
+}
+
+.initial {
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  text-align: center;
+}
+
+.button {
+  font-size: 20px;
+  margin: 10px;
+  margin-top: 0;
+}
+
+.score {
+  display: flex;
+  color: white;
+}
+
+.score h2 {
+  margin-left: 5px;
+}
+
+.mensagem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main h2 {
+  font-size: 30px;
+  color: whitesmoke;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: black;
+  margin: 10px;
+}
+
+footer {
+  display: flex;
+  background-image: url("https://www.des1gnon.com/wp-content/uploads/2019/04/Des1gnON-Psicologia-das-Cores-no-Design-e-Marketing.png");
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height: 86px;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 3px solid black;
+
+}
+
+.renan {
+  margin-left: 2%;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+
+.links {
+  background-color: white;
+  padding: 10px;
+  margin-right: 2%;
+  border-radius: 25px;
+}
+
+.conta1 {
+  margin-right: 5px;
+}
+
+.conta2 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.conta3 {
+  margin-left: 5px;
 }
