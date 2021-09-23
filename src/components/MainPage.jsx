@@ -4,6 +4,7 @@ import SuperFacil from './dificuldades/Mel';
 import Facil from './dificuldades/Facil';
 import Medio from './dificuldades/Medio';
 import Dificil from './dificuldades/Dificil';
+import Footer from './Footer';
 
 class MainPage extends React.Component {
   constructor(){
@@ -63,6 +64,7 @@ class MainPage extends React.Component {
     return (
       <div className="backImage">
         { difEscolhida ? this.jogo() : <EscDif sup={ this.escSupFac } fac={this.escFac} med={this.escMed} dif={this.escDif}/> }
+        <Footer />
       </div>
     )
   }
