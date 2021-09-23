@@ -57,12 +57,12 @@ class MainPage extends React.Component {
 
   render() {
     const { difEscolhida } = this.state;
-    if (localStorage.getItem('recorde') === undefined) {
+    if (localStorage.getItem('recorde') === null) {
       localStorage.setItem('recorde', 0)
     }
     return (
-      <div>
-        { difEscolhida ? this.jogo() : <EscDif supfac={ this.escSupFac } fac={this.escFac} med={this.escMed} dif={this.escDif}/> }
+      <div className="backImage">
+        { difEscolhida ? this.jogo() : <EscDif sup={ this.escSupFac } fac={this.escFac} med={this.escMed} dif={this.escDif}/> }
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../Header';
 
 class Facil extends React.Component {
   constructor() {
@@ -81,33 +82,38 @@ class Facil extends React.Component {
     const ballEsc = { backgroundColor: corEsc }
     return (
     <div>
-      <p>{`Tente adivinhar esta cor: ${corEsc}`}</p>
-      <div>
-        <p>Placar: </p>
-        <p className='score'>{score}</p>
-      </div>
-      <div>
-        <button className='ball' style={ ball1 } onClick={this.placar} disabled={disable} />
-        <button className='ball' style={ ball2 } onClick={this.placar} disabled={disable} />
-        <button className='ball' style={ ball3 } onClick={this.placar} disabled={disable} />
-      </div>
-      {acertou ? 
-      <div>
-        <p className='answer'>{mensagem}</p>
-        <div>
-          <button className='reset-game' onClick={this.novasCores} disabled={newColor}>Novas cores</button>
+      <Header />
+      <div className="main">
+        <h2>{`Tente adivinhar esta cor: ${corEsc}`}</h2>
+        <div className='score'>
+          <h2>Placar: </h2>
+          <h2>{score}</h2>
         </div>
+        <div>
+          <button className='ball' style={ ball1 } onClick={this.placar} disabled={disable} />
+          <button className='ball' style={ ball2 } onClick={this.placar} disabled={disable} />
+          <button className='ball' style={ ball3 } onClick={this.placar} disabled={disable} />
+        </div>
+        {acertou ? 
+        <div className="mensagem">
+          <h2 className='answer'>{mensagem}</h2>
+          <div>
+            <button className='reset-game button' onClick={this.novasCores} disabled={newColor}>Novas cores</button>
+          </div>
+        </div>
+        :
+        <div className="mensagem">
+          <h2>{`Errou. Placar total: ${score} pontos.`}</h2>
+          <h2>A cor certa era:</h2>
+          <button className='ball' style={ ballEsc } disabled={disable} />
+          <h2>Novo jogo?</h2>
+          <div>
+            <button onClick={this.resetar} className="button">Sim</button>
+            <button onClick={ muda } className="button">Não</button>
+          </div>
+        </div>
+        }
       </div>
-      :
-      <div>
-        <p>{`Errou. Placar total: ${score} pontos.`}</p>
-        <p>A cor certa era:</p>
-        <button className='ball' style={ ballEsc } disabled={disable} />
-        <p>Novo jogo?</p>
-        <button onClick={this.resetar}>Sim</button>
-        <button onClick={ muda }>Não</button>
-      </div>
-      }
     </div>
     )
   }
