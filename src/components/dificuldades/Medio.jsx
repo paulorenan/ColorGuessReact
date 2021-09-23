@@ -14,6 +14,7 @@ class Medio extends React.Component {
       acertou: true,
       mensagem: 'Escolha uma cor',
       disable: false,
+      newColor: true,
     }
   }
 
@@ -41,7 +42,7 @@ class Medio extends React.Component {
       cor4: this.gerarCor(),
       cor5: this.gerarCor(),
     })
-    const { cor1, cor2, cor3, cor4, cor5 } = this.state;
+    const { cor1, cor2, cor3, cor4, cor5} = this.state;
     const corAleatoria = [cor1, cor2, cor3, cor4, cor5];
     const corEsc = this.sortear(corAleatoria);
     await this.setState({corEsc});
@@ -55,24 +56,25 @@ class Medio extends React.Component {
         acertou: true,
         mensagem: 'Acertou!',
         disable: true,
+        newColor: false,
       }))
     } else {
-      await this.setState({ acertou: false, disable: true})
+      await this.setState({ acertou: false, disable: true, newColor: false,})
     }
   }
 
   novasCores = () => {
     this.cores();
-    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true});
+    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true, newColor: true,});
   }
 
   resetar = () => {
     this.cores();
-    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true, score: 0});
+    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true, score: 0, newColor: true});
   }
 
   render() {
-    const { cor1, cor2, cor3, cor4, cor5, corEsc, score, mensagem, disable, acertou } = this.state;
+    const { cor1, cor2, cor3, cor4, cor5, corEsc, score, mensagem, disable, acertou, newColor } = this.state;
     const { muda } = this.props
     const ball1 = { backgroundColor: cor1 }
     const ball2 = { backgroundColor: cor2 }
@@ -98,15 +100,15 @@ class Medio extends React.Component {
       <div>
         <p className='answer'>{mensagem}</p>
         <div>
-          <button className='reset-game' onClick={this.novasCores}>Novas cores</button>
+          <button className='reset-game' onClick={this.novasCores} disabled={newColor}>Novas cores</button>
         </div>
       </div>
       :
       <div>
-        <p>{`Errou, fim de jogo, placar total: ${score} pontos.`}</p>
+        <p>{`Errou. Placar total: ${score} pontos.`}</p>
         <p>A cor certa era:</p>
         <button className='ball' style={ ballEsc } disabled={disable} />
-        <p>Continuar jogo?</p>
+        <p>Novo jogo?</p>
         <button onClick={this.resetar}>Sim</button>
         <button onClick={ muda }>Não</button>
       </div>

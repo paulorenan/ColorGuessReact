@@ -10,7 +10,8 @@ class SuperFacil extends React.Component {
       score: 0,
       acertou: true,
       mensagem: 'Escolha uma cor',
-      disable: false
+      disable: false,
+      newColor: true,
     }
   }
 
@@ -34,6 +35,7 @@ class SuperFacil extends React.Component {
     await this.setState({
       cor1: this.gerarCor(),
       cor2: this.gerarCor(),
+      cor3: this.gerarCor(),
     })
     const { cor1, cor2 } = this.state;
     const corAleatoria = [cor1, cor2];
@@ -45,28 +47,29 @@ class SuperFacil extends React.Component {
     const { corEsc } = this.state
     if (event.target.style.backgroundColor === corEsc ) {
       await this.setState((anterior) => ({
-        score: anterior.score + 0.5,
+        score: anterior.score + 1,
         acertou: true,
         mensagem: 'Acertou!',
-        disable: true
+        disable: true,
+        newColor: false,
       }))
     } else {
-      await this.setState({ acertou: false, disable: true})
+      await this.setState({ acertou: false, disable: true, newColor: false,})
     }
   }
 
   novasCores = () => {
     this.cores();
-    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true});
+    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true, newColor: true,});
   }
 
   resetar = () => {
     this.cores();
-    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true, score: 0});
+    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true, score: 0, newColor: true});
   }
 
   render() {
-    const { cor1, cor2, corEsc, score, mensagem, disable, acertou } = this.state;
+    const { cor1, cor2, corEsc, score, mensagem, disable, acertou, newColor } = this.state;
     const { muda } = this.props
     const ball1 = { backgroundColor: cor1 }
     const ball2 = { backgroundColor: cor2 }
@@ -86,15 +89,15 @@ class SuperFacil extends React.Component {
       <div>
         <p className='answer'>{mensagem}</p>
         <div>
-          <button className='reset-game' onClick={this.novasCores}>Novas cores</button>
+          <button className='reset-game' onClick={this.novasCores} disabled={newColor}>Novas cores</button>
         </div>
       </div>
       :
       <div>
-        <p>{`Errou, fim de jogo, placar total: ${score} pontos.`}</p>
+        <p>{`Errou. Placar total: ${score} pontos.`}</p>
         <p>A cor certa era:</p>
         <button className='ball' style={ ballEsc } disabled={disable} />
-        <p>Continuar jogo?</p>
+        <p>Novo jogo?</p>
         <button onClick={this.resetar}>Sim</button>
         <button onClick={ muda }>Não</button>
       </div>
