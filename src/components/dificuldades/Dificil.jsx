@@ -13,8 +13,9 @@ class Dificil extends React.Component {
       cor7: '',
       corEsc: '',
       score: 0,
-      acertou: false,
-      mensagem: 'Escolha uma cor'
+      acertou: true,
+      mensagem: 'Escolha uma cor',
+      disable: false,
     }
   }
 
@@ -54,23 +55,29 @@ class Dificil extends React.Component {
     const { corEsc } = this.state
     if (event.target.style.backgroundColor === corEsc ) {
       await this.setState((anterior) => ({
-        score: anterior.score + 3,
+        score: anterior.score + 1,
         acertou: true,
-        mensagem: 'Acertou!'
+        mensagem: 'Acertou!',
+        disable: true,
       }))
     } else {
-      await this.setState({score: 0, acertou: false, mensagem: 'Errou!'})
+      await this.setState({ acertou: false, disable: true})
     }
-    await this.cores();
+  }
+
+  novasCores = () => {
+    this.cores();
+    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true});
   }
 
   resetar = () => {
     this.cores();
-    this.setState({mensagem: 'Escolha uma cor'});
+    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true, score: 0});
   }
 
   render() {
-    const { cor1, cor2, cor3, cor4, cor5, cor6, cor7, corEsc, score, mensagem } = this.state;
+    const { cor1, cor2, cor3, cor4, cor5, cor6, cor7, corEsc, score, mensagem, disable, acertou } = this.state;
+    const { muda } = this.props
     const ball1 = { backgroundColor: cor1 }
     const ball2 = { backgroundColor: cor2 }
     const ball3 = { backgroundColor: cor3 }
@@ -78,6 +85,7 @@ class Dificil extends React.Component {
     const ball5 = { backgroundColor: cor5 }
     const ball6 = { backgroundColor: cor6 }
     const ball7 = { backgroundColor: cor7 }
+    const ballEsc = { backgroundColor: corEsc }
     return (
     <div>
       <p>{`Tente adivinhar esta cor: ${corEsc}`}</p>
@@ -86,18 +94,31 @@ class Dificil extends React.Component {
         <p className='score'>{score}</p>
       </div>
       <div>
-        <div className='ball' style={ ball1 } onClick={this.placar} />
-        <div className='ball' style={ ball2 } onClick={this.placar} />
-        <div className='ball' style={ ball3 } onClick={this.placar} />
-        <div className='ball' style={ ball4 } onClick={this.placar} />
-        <div className='ball' style={ ball5 } onClick={this.placar} />
-        <div className='ball' style={ ball6 } onClick={this.placar} />
-        <div className='ball' style={ ball7 } onClick={this.placar} />
+        <button className='ball' style={ ball1 } onClick={this.placar} disabled={disable} />
+        <button className='ball' style={ ball2 } onClick={this.placar} disabled={disable} />
+        <button className='ball' style={ ball3 } onClick={this.placar} disabled={disable} />
+        <button className='ball' style={ ball4 } onClick={this.placar} disabled={disable} />
+        <button className='ball' style={ ball5 } onClick={this.placar} disabled={disable} />
+        <button className='ball' style={ ball6 } onClick={this.placar} disabled={disable} />
+        <button className='ball' style={ ball7 } onClick={this.placar} disabled={disable} />
       </div>
-      <p className='answer'>{mensagem}</p>
+      {acertou ? 
       <div>
-        <button className='reset-game' onClick={this.resetar}>Novas cores</button>
+        <p className='answer'>{mensagem}</p>
+        <div>
+          <button className='reset-game' onClick={this.novasCores}>Novas cores</button>
+        </div>
       </div>
+      :
+      <div>
+        <p>{`Errou, fim de jogo, placar total: ${score} pontos.`}</p>
+        <p>A cor certa era:</p>
+        <button className='ball' style={ ballEsc } disabled={disable} />
+        <p>Continuar jogo?</p>
+        <button onClick={this.resetar}>Sim</button>
+        <button onClick={ muda }>Não</button>
+      </div>
+      }
     </div>
     )
   }

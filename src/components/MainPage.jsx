@@ -48,10 +48,9 @@ class MainPage extends React.Component {
     return (
       <div>
         { superFacil ? <SuperFacil muda={this.changeDif}/> : null }
-        { facil ?  <Facil /> : null }
-        { medio ?  <Medio /> : null }
-        { dificil ?  <Dificil /> : null }
-        <button onClick={this.changeDif}>Escolher outra dificuldade</button>
+        { facil ?  <Facil muda={this.changeDif}/> : null }
+        { medio ?  <Medio muda={this.changeDif}/> : null }
+        { dificil ?  <Dificil muda={this.changeDif}/> : null }
       </div>
     )
   }
