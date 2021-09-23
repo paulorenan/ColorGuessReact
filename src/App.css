@@ -82,7 +82,7 @@ header {
 }
 
 .cor {
-  background: rgba(0, 0, 0, 0.4)
+  background: rgba(0, 0, 0, 0.3)
 }
 
 .button {
@@ -201,6 +201,10 @@ footer {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
     margin: 5px;
+  }
+
+  .main1 {
+    height: 500px;
   }
 
   .renan {
