@@ -8,7 +8,7 @@ class SuperFacil extends React.Component {
       cor2: '',
       corEsc: '',
       score: 0,
-      acertou: false,
+      acertou: true,
       mensagem: 'Escolha uma cor',
       disable: false
     }
@@ -57,11 +57,12 @@ class SuperFacil extends React.Component {
 
   resetar = () => {
     this.cores();
-    this.setState({mensagem: 'Escolha uma cor', disable: false});
+    this.setState({mensagem: 'Escolha uma cor', disable: false, acertou: true});
   }
 
   render() {
-    const { cor1, cor2, corEsc, score, mensagem, disable } = this.state;
+    const { cor1, cor2, corEsc, score, mensagem, disable, acertou } = this.state;
+    const { muda } = this.props
     const ball1 = { backgroundColor: cor1 }
     const ball2 = { backgroundColor: cor2 }
     return (
@@ -75,10 +76,21 @@ class SuperFacil extends React.Component {
         <button className='ball' style={ ball1 } onClick={this.placar} disabled={disable} />
         <button className='ball' style={ ball2 } onClick={this.placar} disabled={disable} />
       </div>
-      {<p className='answer'>{mensagem}</p>}
+      {acertou ? 
       <div>
-        <button className='reset-game' onClick={this.resetar}>Novas cores</button>
+        <p className='answer'>{mensagem}</p>
+        <div>
+          <button className='reset-game' onClick={this.resetar}>Novas cores</button>
+        </div>
       </div>
+      :
+      <div>
+        <p>{`Errou, fim de jogo, placar total: ${score} pontos.`}</p>
+        <p>Continuar jogo?</p>
+        <button onClick={this.resetar}>Sim</button>
+        <button onClick={ muda }>Não</button>
+      </div>
+      }
     </div>
     )
   }
